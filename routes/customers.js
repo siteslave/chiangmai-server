@@ -108,9 +108,6 @@ router.post('/', function (req, res, next) {
   let email = req.body.email;
   let image = req.body.image;
 
-  console.log(req.body.firstName);
-  console.log(req.body.lastName);
-
   if (firstName && lastName) {
     // Save customers
     Customer.save(dbPool, firstName, lastName, sex, customerTypeId, telephone, email, image)

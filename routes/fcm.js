@@ -64,13 +64,9 @@ router.post('/send-message', function (req, res, next) {
   let _message = req.body.message;
   let userId = req.body.userId;
   let dbPool = req.dbPool;
-
+  console.log(userId, _message);
   User.getDeviceToken(dbPool, userId)
     .then((rows) => {
-      // let tokens = [];
-      // rows.forEach(v => {
-      //   tokens.push(v.device_token);
-      // });
       let tokens = [];
       tokens.push(rows[0].device_token);
       let message = new gcm.Message();
@@ -93,6 +89,7 @@ router.post('/send-message', function (req, res, next) {
       });
 
     }, (err) => {
+      console.log(err);
       res.send({ ok: false, error: err });
     });
 });
