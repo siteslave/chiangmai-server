@@ -53,8 +53,7 @@ app.use((req, res, next) => {
 // token middleware
 let authToken = (req, res, next) => {
   console.log(req.headers);
-  var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['Authorization'];
-  console.log(token);
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
   jwt.verify(token)
     .then((decoded) => {
       req.decoded = decoded;
