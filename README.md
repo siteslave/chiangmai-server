@@ -32,9 +32,9 @@ GET       /customers
 GET       /customers/search/:query
 GET       /customers/detail/:customerId
 GET       /customers/groups
-DELETE    /customers/customers/:customerId
-POST      /customers/customers [firstName, lastName, sex, customerTypeId, telephone, email, image]
-PUT       /customers/customers [firstName, lastName, sex, customerTypeId, telephone, email, image, customerId]
+DELETE    /customers/:customerId
+POST      /customers [firstName, lastName, sex, customerTypeId, telephone, email, image]
+PUT       /customers [firstName, lastName, sex, customerTypeId, telephone, email, image, customerId]
 POST      /customers/save-map [customerId, lat, lng]
 GET       /customers/get-map/:customerId
 
