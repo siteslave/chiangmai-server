@@ -25,12 +25,12 @@ module.exports = {
     let q = Q.defer();
     // sql query
     let _query = `%${query}%`;
-    let sql = `SELECT * FROM customers WHERE first_name LIKE ? ORDER BY first_name, last_name`;
+    let sql = `SELECT * FROM customers WHERE (first_name LIKE ? OR last_name LIKE ?) ORDER BY first_name, last_name`;
     db.getConnection((err, conn) => {
       if (err) {
         q.reject(err);
       } else {
-        conn.query(sql, [_query], (err, rows) => {
+        conn.query(sql, [_query, _query], (err, rows) => {
           if (err) q.reject(err);
           else q.resolve(rows);
         });

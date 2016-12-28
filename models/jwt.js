@@ -4,7 +4,7 @@ let Q = require('q');
 let secretKey = 'youAremAnoRGril';
 
 module.exports = {
-  sign(playload) {
+  sign(playload) { 
     let token = jwt.sign(playload, secretKey, {
       expiresIn: '2d'
     });

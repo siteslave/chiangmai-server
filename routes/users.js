@@ -26,7 +26,7 @@ router.post('/login', function (req, res, next) {
         if (rows.length) {
           // get user id from index 0
           let userId = rows[0].id;
-          // sign token
+          // sign token 
           let token = Jwt.sign({ userId: userId });
           console.log(token);
           res.send({ ok: true, token: token });

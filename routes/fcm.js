@@ -76,7 +76,7 @@ router.post('/send-message', function (req, res, next) {
       message.addData('data', { "username": "Satit", "message": "Hello world" });
       message.addData('image', 'http://www.pro.moph.go.th/w54/images/ICT/loadlogomoph.png');
 
-      let sender = new gcm.Sender('AAAAHaGNsA0:APA91bHxmpyw06spVJLL90Zms_vnPKykweTvgcRllxPG22BJuWiiwBTHI4qPQ8I480eMpehd_gJn6sk4eaDSnmfohbr5oCZQG-RBaKRcRTqYJIEKvcLm0egv9SxCC0fJnqXApa8TAy0nefi6Buax-LxDxwckLsVoeA');
+      let sender = new gcm.Sender('AAAA9O0a6_Y:APA91bH_-RjwhjeoNLfhLn6K8x13-PNruKqvWDqxFSjIjuIjG29qQ85SPHsLrPMB9ZbJf8Mul0LniBRbDaX7Wsx9IPiN9pOYGEtUOScjeSB1-mo7_6Ex2l7o9p0qFOBwQjghvfFCso2sUxWMBriLHcO4Up1WNMza1A');
 
       sender.send(message, { registrationTokens: tokens }, (err, response) => {
         if (err) {

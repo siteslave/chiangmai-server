@@ -1,17 +1,17 @@
 var gcm = require('node-gcm');
  
 var message = new gcm.Message();
-message.addData('title', 'ข่าว');
-message.addData('message', 'กรุณาส่งข้อมูลด่วนๆๆๆๆ');
+message.addData('title', 'ประกาศ');
+message.addData('message', 'ทดสอบการส่ง Push notificationi');
 message.addData('content-available', true);
-message.addData('chat', { "username": "Satit", "message": "Hello world" });
+message.addData('data', { "username": "Satit", "message": "Hello world" });
 // message.addData('notId', 2);
 // message.addData('image', 'http://res.cloudinary.com/demo/image/upload/w_133,h_133,c_thumb,g_face/bike.jpg');
 message.addData('image', 'http://www.pro.moph.go.th/w54/images/ICT/loadlogomoph.png');
 
 // Set up the sender with you API key, prepare your recipients' registration tokens. 
-var sender = new gcm.Sender('AAAAHaGNsA0:APA91bHxmpyw06spVJLL90Zms_vnPKykweTvgcRllxPG22BJuWiiwBTHI4qPQ8I480eMpehd_gJn6sk4eaDSnmfohbr5oCZQG-RBaKRcRTqYJIEKvcLm0egv9SxCC0fJnqXApa8TAy0nefi6Buax-LxDxwckLsVoeA');
-var regTokens = ["cVWSg7ZSkCc:APA91bEHmyOWMz6-k-RgqH40R8_h5_keyw331XSIA7-bG68sPQhmrDg3bWizvR5iyAzXOK-pZs_i5rVLehyx1JKJspbgBfsA366FxJ7vNoHIqlxEnjN-q2H0ctjFNeTHBCTXOda5R-Tf"];
+var sender = new gcm.Sender('AAAA9O0a6_Y:APA91bH_-RjwhjeoNLfhLn6K8x13-PNruKqvWDqxFSjIjuIjG29qQ85SPHsLrPMB9ZbJf8Mul0LniBRbDaX7Wsx9IPiN9pOYGEtUOScjeSB1-mo7_6Ex2l7o9p0qFOBwQjghvfFCso2sUxWMBriLHcO4Up1WNMza1A');
+var regTokens = ["ekkaUNlaPxU:APA91bGiH3zC3OqQilz81rwD6CO77YjLPpfAk7u3LLGGYOtNb5SofWUWnQ7XIKbI6RqmzUkGbxbaGtkGYLqw62a03t5tS0fBKjiq5iAKpc-pyOd3tbuvKJmgbvLWvQJn6SjFK87x7XUR"];
 
 sender.send(message, { registrationTokens: regTokens }, function (err, response) {
     if(err) console.error(err);
