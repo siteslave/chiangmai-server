@@ -7,12 +7,22 @@ var moment = require('moment');
 var User = require('../models/users');
 // jwt model
 var Jwt = require('../models/jwt');
+var Encrypt = require('../models/encrypt');
+
 /* GET users listing. */
 router.post('/login', function (req, res, next) {
+  let data = req.body.data;
+
+  let strObject = Encrypt.decrypt(data);
+  let user = JSON.parse(strObject);
+
+  console.log(data);
+  console.log(user);
+
   // username
-  let username = req.body.username;
+  let username = user.username;
   // password
-  let password = req.body.password;
+  let password = user.password;
   // db connection
   let db = req.dbPool;
   // check username and password
@@ -28,8 +38,10 @@ router.post('/login', function (req, res, next) {
           let userId = rows[0].id;
           // sign token 
           let token = Jwt.sign({ userId: userId });
-          console.log(token);
-          res.send({ ok: true, token: token });
+          // console.log(token);
+          let _token = Encrypt.encrypt(token);
+
+          res.send({ ok: true, data: _token });
         } else { // login failed
           res.send({ ok: false, error: 'Invalid username/password!' });
         }

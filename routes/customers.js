@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Customer = require('../models/customer');
+var Encrypt = require('../models/encrypt');
 
 // GET http://localhost:3000/customers
 router.get('/', function (req, res, next) {
@@ -20,8 +21,12 @@ router.get('/', function (req, res, next) {
         customer.telephone = v.telephone;
         customer.email = v.email;
         customers.push(customer);
-      })
-      res.send({ ok: true, rows: customers });
+      });
+
+      let strArray = JSON.stringify(customers);   
+      let encryptedText = Encrypt.encrypt(strArray);
+
+      res.send({ ok: true, data: encryptedText });
     }, (error) => {
       res.send({ ok: false, error: error });
     });
